@@ -47,7 +47,7 @@ const options = {
     // Seconds - Throttle how frequently to write to database to extend a session.
     // Use it to limit write operations. Set to 0 to always update the database.
     // Note: This option is ignored if using JSON Web Tokens
-    updateAge: 12 * 60 * 60, // 24 hours
+    //updateAge: 12 * 60 * 60, // 12 hours
   },
 
   // JSON Web tokens are only used for sessions if the `jwt: true` session
