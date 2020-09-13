@@ -21,6 +21,7 @@ const options = {
   database: {
     type: "mongodb",
     useNewUrlParser: true,
+    useUnifiedTopology: true,
     url: process.env.DATABASE_URL,
   },
 
