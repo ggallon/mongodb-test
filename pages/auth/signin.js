@@ -12,8 +12,11 @@ export default function SignIn({ providers }) {
   )
 }
 
-SignIn.getInitialProps = async (context) => {
+
+export async function getServerSideProps(context) {
   return {
-    providers: await providers(context)
+    props: {
+    	providers: await providers(context)
+    }
   }
 }
