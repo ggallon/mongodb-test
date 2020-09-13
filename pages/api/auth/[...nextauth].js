@@ -102,7 +102,7 @@ const options = {
   events: { },
 
   // Enable debug messages in the console if you are having problems
-  debug: true,
+  debug: process.env.NODE_ENV !== 'production',
 }
 
 export default (req, res) => NextAuth(req, res, options)
