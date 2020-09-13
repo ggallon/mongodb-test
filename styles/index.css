@@ -1,0 +1,11 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+@tailwind components;
+
+/* Write you own custom component styles here */
+
+@tailwind utilities;
+
+/* Your own custom utilities */
