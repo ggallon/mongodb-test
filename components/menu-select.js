@@ -26,7 +26,7 @@ function MenuSelect() {
         <span className="inline-block w-full rounded-md shadow-sm">
           <button type="button" {...getToggleButtonProps()} className="cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
             <div className="flex items-center space-x-3">
-              <img src={selectedItem ? selectedItem.avatar : 'Name'} alt="avatar" className="flex-shrink-0 h-6 w-6 rounded-full" />
+              <img src={selectedItem ? selectedItem.avatar : 'https://unsplash.com/photos/GMIA-4s6yEA/download?force=true&w=640'} alt="avatar" className="flex-shrink-0 h-6 w-6 rounded-full" />
               <span className="block truncate">
                 {selectedItem ? itemToString(selectedItem) : 'Name'}
               </span>
