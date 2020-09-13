@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import { connectToDatabase } from '../util/mongodb'
+import MenuSelect from '../components/menu-select'
 
 export default function Home({ isConnected }) {
   const [ session, loading ] = useSession()
@@ -33,6 +34,7 @@ export default function Home({ isConnected }) {
           Get started by editing <code>pages/index.js</code>
         </p>
         <div className="w-full max-w-xs mx-auto">
+          <MenuSelect />
         </div>
       </main>
 
