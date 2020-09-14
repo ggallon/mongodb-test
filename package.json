@@ -9,7 +9,7 @@
   "dependencies": {
     "downshift": "6.0.6",
     "mongodb": "3.6.2",
-    "next": "9.5.4-canary.14",
+    "next": "9.5.4-canary.15",
     "next-auth": "3.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
