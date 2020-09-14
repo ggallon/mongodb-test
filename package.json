@@ -6,6 +6,11 @@
     "build": "next build",
     "start": "next start"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "dependencies": {
     "@tailwindui/react": "0.1.1",
     "downshift": "6.0.6",
@@ -20,8 +25,11 @@
   },
   "devDependencies": {
     "@tailwindcss/ui": "0.6.0",
+    "husky": "4.3.0",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "6.7.0",
+    "prettier": "2.1.1",
+    "pretty-quick": "3.0.2",
     "tailwindcss": "1.8.9"
   }
 }
