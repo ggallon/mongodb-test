@@ -1,5 +1,5 @@
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -9,13 +9,14 @@ const options = {
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+      authorizationUrl:
+        'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
       scope: [
         'https://www.googleapis.com/auth/userinfo.profile',
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/gmail.compose'
-      ].join(' '),
-    }),
+      ].join(' ')
+    })
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
   // https://next-auth.js.org/configuration/database
@@ -24,10 +25,10 @@ const options = {
   // * You must to install an appropriate node_module for your database
   // * The Email provider requires a database (OAuth providers do not)
   database: {
-    type: "mongodb",
+    type: 'mongodb',
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    url: process.env.DATABASE_URL,
+    url: process.env.DATABASE_URL
   },
 
   // The secret should be set to a reasonably long random string.
@@ -42,12 +43,12 @@ const options = {
     jwt: true,
 
     // Seconds - How long until an idle session expires and is no longer valid.
-    maxAge: 5 * 24 * 60 * 60, // 5 days
+    maxAge: 5 * 24 * 60 * 60 // 5 days
 
     // Seconds - Throttle how frequently to write to database to extend a session.
     // Use it to limit write operations. Set to 0 to always update the database.
     // Note: This option is ignored if using JSON Web Tokens
-    //updateAge: 12 * 60 * 60, // 12 hours
+    // updateAge: 12 * 60 * 60, // 12 hours
   },
 
   // JSON Web tokens are only used for sessions if the `jwt: true` session
@@ -58,7 +59,7 @@ const options = {
     secret: process.env.NEXTAUTH_JWT_SECRET,
 
     // Set to true to use encryption (default: false)
-    encryption: true,
+    encryption: true
 
     // You can define your own encode/decode functions for signing and encryption
     // if you want to override the default behaviour.
@@ -87,22 +88,24 @@ const options = {
     // session: async (session, user) => { return Promise.resolve(session) },
     // jwt: async (token, user, account, profile, isNewUser) => { return Promise.resolve(token) }
     signIn: async (user, account, profile) => {
-      if (account.provider === 'google' &&
-          profile.verified_email === true &&
-          profile.email.endsWith('@20minutes.fr')) {
-        return Promise.resolve(true)
-      } else {
-        return Promise.resolve(false)
+      if (
+        account.provider === 'google' &&
+        profile.verified_email === true &&
+        profile.email.endsWith('@20minutes.fr')
+      ) {
+        return Promise.resolve(true);
       }
-    },
+
+      return Promise.resolve(false);
+    }
   },
 
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
-  events: { },
+  events: {},
 
   // Enable debug messages in the console if you are having problems
-  debug: process.env.NODE_ENV !== 'production',
-}
+  debug: process.env.NODE_ENV !== 'production'
+};
 
-export default (req, res) => NextAuth(req, res, options)
+export default (req, res) => NextAuth(req, res, options);

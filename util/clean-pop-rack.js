@@ -17,35 +17,32 @@ const KEY_MAPPING = [
   'delivery_hour',
   'retrieval_hour',
   'latitude',
-  'longitude',
-]
+  'longitude'
+];
 
-const cleanPopRack = (racks) => {
-  let cleanData = []
+const cleanPopRack = racks => {
+  const cleanData = [];
 
-  racks.forEach((rack) => {
-    const values = Object.values(rack)
-    const merged = KEY_MAPPING.reduce((obj, key, index) => (
-      { ...obj, [key]: values[index] }),
-      {}
-    );
+  racks.forEach(rack => {
+    const values = Object.values(rack);
+    const merged = KEY_MAPPING.reduce((obj, key, index) => ({ ...obj, [key]: values[index] }), {});
 
     const cleaned = {
       ...merged,
-      position: merged['position'].replace(/\s+/g, ''),
-      latitude: Number(merged['latitude']),
-      longitude: Number(merged['longitude']),
+      position: merged.position.replace(/\s+/g, ''),
+      latitude: Number(merged.latitude),
+      longitude: Number(merged.longitude),
       location: {
-        type: "Point",
-        coordinates: [Number(merged['longitude']), Number(merged['latitude'])]
+        type: 'Point',
+        coordinates: [Number(merged.longitude), Number(merged.latitude)]
       },
-      status: merged['status'] === 'Actif' ? true : false
-    }
+      status: merged.status === 'Actif'
+    };
 
-    cleanData.push(cleaned)
-   })
+    cleanData.push(cleaned);
+  });
 
-  return cleanData
-}
+  return cleanData;
+};
 
-export default cleanPopRack
+export default cleanPopRack;

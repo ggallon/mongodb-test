@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import { signIn, signOut, useSession } from 'next-auth/client'
-import { connectToDatabase } from '../util/mongodb'
-import MenuSelect from '../components/menu-select'
+import Head from 'next/head';
+import { signIn, signOut, useSession } from 'next-auth/client';
+import { connectToDatabase } from '../util/mongodb';
+import MenuSelect from '../components/menu-select';
 
 export default function Home({ isConnected }) {
   const [ session, loading ] = useSession()
@@ -18,15 +18,28 @@ export default function Home({ isConnected }) {
           Welcome to <a href="#">NP with MongoDB!</a>
         </h1>
 
-        {!session && <>Not signed in <br/><button onClick={signIn}>Sign in</button></>}
-        {session && <>Signed in as {session.user.email} <br/><button onClick={signOut}>Sign out</button></>}
+        {!session && (
+          <>
+            Not signed in <br />
+            <button type="button" onClick={signIn}>
+              Sign in
+            </button>
+          </>
+        )}
+        {session && (
+          <>
+            Signed in as {session.user.email} <br />
+            <button type="button" onClick={signOut}>
+              Sign out
+            </button>
+          </>
+        )}
 
         {isConnected ? (
           <h2 className="subtitle">You are connected to MongoDB</h2>
         ) : (
           <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
-            for instructions.
+            You are NOT connected to MongoDB. Check the <code>README.md</code> for instructions.
           </h2>
         )}
 
@@ -39,13 +52,8 @@ export default function Home({ isConnected }) {
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+        <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
+          Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
 
@@ -128,8 +136,8 @@ export default function Home({ isConnected }) {
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+            Bitstream Vera Sans Mono, Courier New, monospace;
         }
 
         .logo {
@@ -149,9 +157,8 @@ export default function Home({ isConnected }) {
         body {
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+            Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         }
 
         * {
@@ -159,15 +166,15 @@ export default function Home({ isConnected }) {
         }
       `}</style>
     </div>
-  )
+  );
 }
 
-export async function getServerSideProps(context) {
-  const { client } = await connectToDatabase()
+export async function getServerSideProps() {
+  const { client } = await connectToDatabase();
 
-  const isConnected = await client.isConnected() // Returns true or false
+  const isConnected = await client.isConnected(); // Returns true or false
 
   return {
-    props: { isConnected },
-  }
+    props: { isConnected }
+  };
 }
