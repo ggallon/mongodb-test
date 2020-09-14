@@ -7,6 +7,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindui/react": "0.1.1",
     "downshift": "6.0.6",
     "mongodb": "3.6.2",
     "next": "9.5.4-canary.15",
