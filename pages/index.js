@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import { connectToDatabase } from '../util/mongodb';
-import MenuSelect from '../components/menu-select';
+import { connectToDatabase } from '@/util/mongodb';
+import MenuSelect from '@/components/menu-select';
 
 export default function Home({ isConnected }) {
   // eslint-disable-next-line no-unused-vars
