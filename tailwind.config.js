@@ -2,18 +2,13 @@ module.exports = {
   future: 'all',
   purge: {
     mode: 'all',
-    content: [
-      './components/**/*.{js,ts,jsx,tsx}',
-      './pages/**/*.{js,ts,jsx,tsx}'
-    ],
+    content: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
     preserveHtmlElements: true,
     options: {
-      keyframes: true,
-    },
+      keyframes: true
+    }
   },
   theme: {},
   variants: {},
-  plugins: [
-    require('@tailwindcss/ui'),
-  ],
-}
+  plugins: [require('@tailwindcss/ui')]
+};
