@@ -4,6 +4,7 @@ import { connectToDatabase } from '../util/mongodb';
 import MenuSelect from '../components/menu-select';
 
 export default function Home({ isConnected }) {
+  // eslint-disable-next-line no-unused-vars
   const [ session, loading ] = useSession()
 
   return (

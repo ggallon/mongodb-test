@@ -59,7 +59,7 @@ export default function Component() {
           ></Transition>
           */}
           <div className="fixed inset-0">
-            <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
+            <div className="absolute inset-0 bg-gray-600 opacity-75" />
           </div>
           {/*
             Off-canvas menu, show/hide based on off-canvas menu state.
@@ -175,7 +175,7 @@ export default function Component() {
                       href="/"
                       className="group flex items-center px-3 py-2 text-base leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150"
                     >
-                      <span className="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full"></span>
+                      <span className="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" />
                       <span className="truncate">Engineering</span>
                     </a>
 
@@ -183,7 +183,7 @@ export default function Component() {
                       href="/"
                       className="group flex items-center px-3 py-2 text-base leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150"
                     >
-                      <span className="w-2.5 h-2.5 mr-4 bg-teal-400 rounded-full"></span>
+                      <span className="w-2.5 h-2.5 mr-4 bg-teal-400 rounded-full" />
                       <span className="truncate">Human Resources</span>
                     </a>
 
@@ -191,7 +191,7 @@ export default function Component() {
                       href="/"
                       className="group flex items-center px-3 py-2 text-base leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150"
                     >
-                      <span className="w-2.5 h-2.5 mr-4 bg-orange-500 rounded-full"></span>
+                      <span className="w-2.5 h-2.5 mr-4 bg-orange-500 rounded-full" />
                       <span className="truncate">Customer Success</span>
                     </a>
                   </div>
@@ -295,7 +295,7 @@ export default function Component() {
                       Notifications
                     </a>
                   </div>
-                  <div className="border-t border-gray-100"></div>
+                  <div className="border-t border-gray-100" />
                   <div className="py-1">
                     <a
                       href="/"
@@ -312,7 +312,7 @@ export default function Component() {
                       Support
                     </a>
                   </div>
-                  <div className="border-t border-gray-100"></div>
+                  <div className="border-t border-gray-100" />
                   <div className="py-1">
                     <a
                       href="/"
@@ -427,7 +427,7 @@ export default function Component() {
                     href="/"
                     className="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150"
                   >
-                    <span className="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full"></span>
+                    <span className="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" />
                     <span className="truncate">Engineering</span>
                   </a>
 
@@ -435,7 +435,7 @@ export default function Component() {
                     href="/"
                     className="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150"
                   >
-                    <span className="w-2.5 h-2.5 mr-4 bg-teal-400 rounded-full"></span>
+                    <span className="w-2.5 h-2.5 mr-4 bg-teal-400 rounded-full" />
                     <span className="truncate">Human Resources</span>
                   </a>
 
@@ -443,7 +443,7 @@ export default function Component() {
                     href="/"
                     className="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150"
                   >
-                    <span className="w-2.5 h-2.5 mr-4 bg-orange-500 rounded-full"></span>
+                    <span className="w-2.5 h-2.5 mr-4 bg-orange-500 rounded-full" />
                     <span className="truncate">Customer Success</span>
                   </a>
                 </div>
@@ -557,7 +557,7 @@ export default function Component() {
                         Notifications
                       </a>
                     </div>
-                    <div className="border-t border-gray-100"></div>
+                    <div className="border-t border-gray-100" />
                     <div className="py-1">
                       <a
                         href="/"
@@ -574,7 +574,7 @@ export default function Component() {
                         Support
                       </a>
                     </div>
-                    <div className="border-t border-gray-100"></div>
+                    <div className="border-t border-gray-100" />
                     <div className="py-1">
                       <a
                         href="/"
@@ -672,7 +672,7 @@ export default function Component() {
                             View
                           </a>
                         </div>
-                        <div className="border-t border-gray-100"></div>
+                        <div className="border-t border-gray-100" />
                         <div className="py-1">
                           <a
                             href="/"
@@ -712,7 +712,7 @@ export default function Component() {
                   className="flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6"
                 >
                   <div className="flex items-center truncate space-x-3">
-                    <div className="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-pink-600"></div>
+                    <div className="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-pink-600" />
                     <p className="font-medium truncate text-sm leading-6">
                       GraphQL API{' '}
                       <span className="truncate font-normal text-gray-500">in Engineering</span>
@@ -750,7 +750,7 @@ export default function Component() {
                     <th className="hidden md:table-cell px-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                       Last updated
                     </th>
-                    <th className="pr-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
+                    <th className="pr-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">{' '}</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-100">
@@ -758,7 +758,7 @@ export default function Component() {
                     <tr key={index}>
                       <td className="px-6 py-3 max-w-0 w-full whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
                         <div className="flex items-center space-x-3 lg:pl-2">
-                          <div className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-pink-600"></div>
+                          <div className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-pink-600" />
                           <a href="/" className="truncate hover:text-gray-600">
                             <span>
                               GraphQL API{' '}
@@ -880,7 +880,7 @@ export default function Component() {
                                   Share
                                 </a>
                               </div>
-                              <div className="border-t border-gray-100"></div>
+                              <div className="border-t border-gray-100" />
                               <div className="py-1">
                                 <a
                                   href="/"
