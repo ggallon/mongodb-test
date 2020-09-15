@@ -1,4 +1,5 @@
 import SidebarLayout from '@/components/layout/sidebar';
+import { Card, CardBody, CardFooter } from '@/components/card';
 
 function DashboardPage() {
   return (
@@ -92,8 +93,8 @@ function DashboardPage() {
             <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {/* Card */}
 
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="p-5">
+              <Card>
+                <CardBody>
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       {/* Heroicon name: scale */}
@@ -124,8 +125,8 @@ function DashboardPage() {
                       </dl>
                     </div>
                   </div>
-                </div>
-                <div className="bg-cool-gray-50 px-5 py-3">
+                </CardBody>
+                <CardFooter bgray>
                   <div className="text-sm leading-5">
                     <a
                       href="/"
@@ -134,8 +135,8 @@ function DashboardPage() {
                       View all
                     </a>
                   </div>
-                </div>
-              </div>
+                </CardFooter>
+              </Card>
 
               {/* More cards... */}
             </div>
