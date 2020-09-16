@@ -24,7 +24,7 @@ export default function AccessDenied() {
               </div>
             </div>
           </div>
-          <div className="mt-5 sm:mt-6 bg-gray-50">
+          <div className="mt-5 sm:mt-6">
             <a href="/api/auth/signin"
               onClick={(e) => {
                 e.preventDefault()
