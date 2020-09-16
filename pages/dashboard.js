@@ -1,14 +1,16 @@
-import { useSession } from 'next-auth/client'
-import AccessDenied from '@/components/access-denied'
+import { useSession } from 'next-auth/client';
+import AccessDenied from '@/components/access-denied';
 import SidebarLayout from '@/components/layout/sidebar';
 import { Card, CardBody, CardFooter } from '@/components/card';
 
 function DashboardPage() {
-  const [ session, loading ] = useSession()
+  const [session, loading] = useSession();
   // When rendering client side don't display anything until loading is complete
-  if (typeof window !== 'undefined' && loading) return null
+  if (typeof window !== 'undefined' && loading) return null;
   // If no session exists, display access denied message
-  if (!session) { return  <AccessDenied/> }
+  if (!session) {
+    return <AccessDenied />;
+  }
 
   return (
     <SidebarLayout>
