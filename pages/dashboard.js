@@ -1,7 +1,15 @@
+import { useSession } from 'next-auth/client'
+import AccessDenied from '@/components/access-denied'
 import SidebarLayout from '@/components/layout/sidebar';
 import { Card, CardBody, CardFooter } from '@/components/card';
 
 function DashboardPage() {
+  const [ session, loading ] = useSession()
+  // When rendering client side don't display anything until loading is complete
+  if (typeof window !== 'undefined' && loading) return null
+  // If no session exists, display access denied message
+  if (!session) { return  <AccessDenied/> }
+
   return (
     <SidebarLayout>
       <main className="flex-1 relative pb-8 z-0 overflow-y-auto">
