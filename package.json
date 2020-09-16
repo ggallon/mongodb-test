@@ -21,9 +21,6 @@
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
-  "peerOptionalDependencies": {
-    "mongodb": "3.6.2"
-  },
   "devDependencies": {
     "@tailwindcss/ui": "0.6.2",
     "babel-eslint": "10.1.0",
@@ -42,5 +39,8 @@
     "prettier": "2.1.2",
     "pretty-quick": "3.0.2",
     "tailwindcss": "1.8.10"
+  },
+  "peerOptionalDependencies": {
+    "mongodb": "3.6.2"
   }
 }
