@@ -7,7 +7,7 @@ export default function AccessDenied() {
       <div className="flex items-center justify-center h-screen max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div className="bg-white rounded-lg px-4 py-4 text-left overflow-hidden shadow-xl mb-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
           <div>
-            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+            <div className="mx-auto flex items-center justify-center h-10 w-10 rounded-full bg-red-100">
               {/* Heroicon name: exclamation */}
               <svg
                 className="h-6 w-6 text-red-600"
@@ -50,7 +50,7 @@ export default function AccessDenied() {
                   Connectez-vous à votre compte
                   <svg className={styles.HoverArrow} viewBox="0 0 10 10" aria-hidden="true">
                     <g fillRule="evenodd">
-                      <path className={styles.HoverArrow__linePath} s d="M0 5h7" />
+                      <path className={styles.HoverArrow__linePath} d="M0 5h7" />
                       <path className={styles.HoverArrow__tipPath} d="M1 1l4 4-4 4" />
                     </g>
                   </svg>
