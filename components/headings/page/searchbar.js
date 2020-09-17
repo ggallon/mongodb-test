@@ -1,10 +1,40 @@
+import { useRef, useState, useEffect } from 'react';
+import { signOut, useSession } from 'next-auth/client';
+import { Transition } from '@tailwindui/react';
+import IconChevronDown from '@/components/icons/chevron-down';
+
 function SearchBar() {
+  const [session, loading] = useSession();
+  const nodeProfileIsOpen = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClickOutsideProfile = e => {
+    if (nodeProfileIsOpen.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    // outside click
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutsideProfile);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutsideProfile);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideProfile);
+    };
+  }, [isOpen]);
+
   return (
     <div className="flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
       <div className="flex-1 flex">
         <form className="w-full flex md:ml-0" action="#" method="GET">
           <label htmlFor="search_field" className="sr-only">
-            Search
+            Rechercher
           </label>
           <div className="relative w-full text-cool-gray-400 focus-within:text-cool-gray-600">
             <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
@@ -19,7 +49,7 @@ function SearchBar() {
             <input
               id="search_field"
               className="block w-full h-full pl-8 pr-3 py-2 rounded-md text-cool-gray-900 placeholder-cool-gray-500 focus:outline-none focus:placeholder-cool-gray-400 sm:text-sm"
-              placeholder="Search"
+              placeholder="Rechercher"
               type="search"
             />
           </div>
@@ -43,34 +73,21 @@ function SearchBar() {
 
         {/* Profile dropdown */}
         <div className="ml-3 relative">
-          <div>
+          <div ref={nodeProfileIsOpen}>
             <button
+              onClick={() => setIsOpen(!isOpen)}
               type="button"
               className="max-w-xs flex items-center text-sm rounded-full focus:outline-none focus:bg-cool-gray-100 lg:p-2 lg:rounded-md lg:hover:bg-cool-gray-100"
               id="user-menu"
               aria-label="User menu"
               aria-haspopup="true"
             >
-              <img
-                className="h-8 w-8 rounded-full"
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
+              <img className="h-8 w-8 rounded-full" src={session.user.image} alt="" />
               <p className="hidden ml-3 text-cool-gray-700 text-sm leading-5 font-medium lg:block">
-                Emilia Birch
+                {session.user.name}
               </p>
               {/* Heroicon name: chevron-down */}
-              <svg
-                className="hidden flex-shrink-0 ml-1 h-5 w-5 text-cool-gray-400 lg:block"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <IconChevronDown />
             </button>
           </div>
           {/*
@@ -83,7 +100,16 @@ function SearchBar() {
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           */}
-          <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+          <Transition
+            show={isOpen}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+            className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+          >
             <div
               className="py-1 rounded-md bg-white shadow-xs"
               role="menu"
@@ -91,28 +117,26 @@ function SearchBar() {
               aria-labelledby="user-menu"
             >
               <a
-                href="/"
+                href="#"
                 className="block px-4 py-2 text-sm text-cool-gray-700 hover:bg-cool-gray-100 transition ease-in-out duration-150"
                 role="menuitem"
               >
-                Your Profile
+                Mon profile
               </a>
+
               <a
-                href="/"
+                href="/api/auth/signout"
+                onClick={e => {
+                  e.preventDefault();
+                  signOut();
+                }}
                 className="block px-4 py-2 text-sm text-cool-gray-700 hover:bg-cool-gray-100 transition ease-in-out duration-150"
                 role="menuitem"
               >
-                Settings
-              </a>
-              <a
-                href="/"
-                className="block px-4 py-2 text-sm text-cool-gray-700 hover:bg-cool-gray-100 transition ease-in-out duration-150"
-                role="menuitem"
-              >
-                Logout
+                Déconnexion
               </a>
             </div>
-          </div>
+          </Transition>
         </div>
       </div>
     </div>
