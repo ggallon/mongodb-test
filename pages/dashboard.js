@@ -2,6 +2,17 @@ import { useSession } from 'next-auth/client';
 import AccessDenied from '@/components/access-denied';
 import SidebarLayout from '@/components/layout/sidebar';
 import { Card, CardBody, CardFooter } from '@/components/card';
+import IconHome from '@/components/icons/home';
+import IconCalendar from '@/components/icons/calendar';
+import IconMail from '@/components/icons/mail';
+import IconChartBar from '@/components/icons/chart-bar';
+
+const menuItems = [
+  { title: 'Dashboard', url: '/fabrication/racks', icon: IconHome },
+  { title: 'Calendrier', url: '/fabrication/positions', icon: IconCalendar },
+  { title: 'Confirmation', url: '/fabrication/maps', icon: IconMail },
+  { title: 'Rapport', url: '/fabrication/maps', icon: IconChartBar }
+];
 
 function DashboardPage() {
   const [session, loading] = useSession();
@@ -13,7 +24,7 @@ function DashboardPage() {
   }
 
   return (
-    <SidebarLayout>
+    <SidebarLayout menuItems={menuItems}>
       <main className="flex-1 relative pb-8 z-0 overflow-y-auto">
         {/* Page header */}
         <div className="bg-white shadow">

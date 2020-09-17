@@ -1,18 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, createElement } from 'react';
 import { Transition } from '@tailwindui/react';
-import DesktopSidebarItem from '@/components/sidebar/desktop-item'
-import dynamic from 'next/dynamic'
-import IconMail from '@/components/icons/mail'
-import IconCharBar from '@/components/icons/chart-bar'
-import IconCalendar from '@/components/icons/calendar'
-
-const iconsList = {
-  IconHome: dynamic(() => import('@/components/icons/home')),
-  IconLocationMarker: dynamic(() => import('@/components/icons/location-marker'))
-}
+import DesktopSidebarItem from '@/components/sidebar/desktop-item';
 
 function DesktopSidebar({ menuItems }) {
-  const icons = menuItems.map((item) => iconsList[item.icon])
   const nodeProfileIsOpen = useRef();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -138,26 +128,15 @@ function DesktopSidebar({ menuItems }) {
               </Transition>
             </div>
             <nav className="mt-5 flex-1 px-2 bg-gray-800 space-y-1">
-
-              {menuItems.map((item) => (
-                <DesktopSidebarItem key={item.title} href={item.url}>
-                  {icons.map(Icon => <Icon />)}
-                  {item.title}
-                </DesktopSidebarItem>
-              ))}
-
-              <DesktopSidebarItem href="#">
-                <IconCalendar className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150" />
-                Calendrier
-              </DesktopSidebarItem>
-              <DesktopSidebarItem href="#">
-                <IconMail className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150" />
-                Confirmation
-              </DesktopSidebarItem>
-              <DesktopSidebarItem href="#">
-                <IconCharBar className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150" />
-                Rapport
-              </DesktopSidebarItem>
+              {menuItems.map(item => {
+                const Icon = item.icon;
+                return (
+                  <DesktopSidebarItem key={item.title} href={item.url}>
+                    <Icon className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150" />
+                    {item.title}
+                  </DesktopSidebarItem>
+                );
+              })}
             </nav>
           </div>
         </div>
