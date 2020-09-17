@@ -6,6 +6,14 @@
 
 /* Write you own custom component styles here */
 
+.section-hero {
+  top: 0;
+  width: 100%;
+  background: #2e1d7d;
+  background: radial-gradient(circle, #2e1d7d 0%, #050939 80%);
+  background: -webkit-radial-gradient(circle, #2e1d7d 0%, #050939 80%);
+}
+
 @tailwind utilities;
 
 /* Your own custom utilities */
