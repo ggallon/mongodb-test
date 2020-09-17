@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, createElement } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Transition } from '@tailwindui/react';
 import DesktopSidebarItem from '@/components/sidebar/desktop-item';
 
