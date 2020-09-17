@@ -2,11 +2,13 @@ import { useSession } from 'next-auth/client';
 import AccessDenied from '@/components/access-denied';
 import SidebarLayout from '@/components/layout/sidebar';
 import IconHome from '@/components/icons/home';
+import IconLocationMarker from '@/components/icons/location-marker';
+import IconMap from '@/components/icons/map';
 
 const menuItems = [
   { title: 'Racks', url: '/places/racks', icon: IconHome },
-  { title: 'Positions', url: '/places/positions', icon: IconHome },
-  { title: 'Maps', url: '/places/maps', icon: IconHome }
+  { title: 'Positions', url: '/places/positions', icon: IconLocationMarker },
+  { title: 'Maps', url: '/places/maps', icon: IconMap }
 ];
 
 function PlacesDashboardPage() {
