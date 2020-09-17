@@ -4,7 +4,7 @@ import { Transition } from '@tailwindui/react';
 import DesktopSidebar from '@/components/sidebar/desktop';
 import SearchBar from '@/components/headings/page/searchbar';
 
-function SideBarLayout({ children }) {
+function SideBarLayout({ menuItems, children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -104,7 +104,7 @@ function SideBarLayout({ children }) {
         </Transition>
 
         {/* Static sidebar for desktop */}
-        <DesktopSidebar />
+        <DesktopSidebar menuItems={menuItems} />
 
         <div className="flex-1 overflow-auto focus:outline-none">
           <div className="relative z-10 flex flex-shrink-0 h-16 bg-white border-b border-gray-200 lg:border-none">

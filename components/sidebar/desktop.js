@@ -1,7 +1,18 @@
 import { useRef, useState, useEffect } from 'react';
 import { Transition } from '@tailwindui/react';
+import DesktopSidebarItem from '@/components/sidebar/desktop-item'
+import dynamic from 'next/dynamic'
+import IconMail from '@/components/icons/mail'
+import IconCharBar from '@/components/icons/chart-bar'
+import IconCalendar from '@/components/icons/calendar'
 
-function DesktopSidebar() {
+const iconsList = {
+  IconHome: dynamic(() => import('@/components/icons/home')),
+  IconLocationMarker: dynamic(() => import('@/components/icons/location-marker'))
+}
+
+function DesktopSidebar({ menuItems }) {
+  const icons = menuItems.map((item) => iconsList[item.icon])
   const nodeProfileIsOpen = useRef();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -80,7 +91,7 @@ function DesktopSidebar() {
               </div>
               {/*
                 Dropdown panel, show/hide based on dropdown state.
-    
+
                 Entering: "transition ease-out duration-100"
                   From: "transform opacity-0 scale-95"
                   To: "transform opacity-100 scale-100"
@@ -116,7 +127,7 @@ function DesktopSidebar() {
                   <div className="border-t border-gray-100" />
                   <div className="py-1">
                     <a
-                      href="#"
+                      href="/places"
                       className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                       role="menuitem"
                     >
@@ -127,89 +138,26 @@ function DesktopSidebar() {
               </Transition>
             </div>
             <nav className="mt-5 flex-1 px-2 bg-gray-800 space-y-1">
-              <a
-                href="#"
-                className="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-white rounded-md bg-gray-900 focus:outline-none focus:bg-gray-700 transition ease-in-out duration-150"
-              >
-                {/* Heroicon name: home */}
-                <svg
-                  className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  />
-                </svg>
-                Dashboard
-              </a>
-              <a
-                href="#"
-                className="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-300 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition ease-in-out duration-150"
-              >
-                {/* Heroicon name: calendar */}
-                <svg
-                  className="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
+
+              {menuItems.map((item) => (
+                <DesktopSidebarItem key={item.title} href={item.url}>
+                  {icons.map(Icon => <Icon />)}
+                  {item.title}
+                </DesktopSidebarItem>
+              ))}
+
+              <DesktopSidebarItem href="#">
+                <IconCalendar className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150" />
                 Calendrier
-              </a>
-              <a
-                href="#"
-                className="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-300 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition ease-in-out duration-150"
-              >
-                {/* Heroicon name: inbox */}
-                <svg
-                  className="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                  />
-                </svg>
+              </DesktopSidebarItem>
+              <DesktopSidebarItem href="#">
+                <IconMail className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150" />
                 Confirmation
-              </a>
-              <a
-                href="#"
-                className="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-300 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition ease-in-out duration-150"
-              >
-                {/* Heroicon name: chart-bar */}
-                <svg
-                  className="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
+              </DesktopSidebarItem>
+              <DesktopSidebarItem href="#">
+                <IconCharBar className="mr-3 h-6 w-6 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150" />
                 Rapport
-                <span className="ml-auto inline-block py-0.5 px-3 text-xs leading-4 font-medium rounded-full bg-gray-900 transition ease-in-out duration-150 group-hover:bg-gray-800 group-focus:bg-gray-800">
-                  12
-                </span>
-              </a>
+              </DesktopSidebarItem>
             </nav>
           </div>
         </div>
