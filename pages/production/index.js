@@ -8,13 +8,13 @@ import IconMail from '@/components/icons/mail';
 import IconChartBar from '@/components/icons/chart-bar';
 
 const menuItems = [
-  { title: 'Dashboard', url: '/fabrication/racks', icon: IconHome },
-  { title: 'Calendrier', url: '/fabrication/positions', icon: IconCalendar },
-  { title: 'Confirmation', url: '/fabrication/maps', icon: IconMail },
-  { title: 'Rapport', url: '/fabrication/maps', icon: IconChartBar }
+  { title: 'Dashboard', url: '/production', icon: IconHome },
+  { title: 'Calendrier', url: '/production/calendar', icon: IconCalendar },
+  { title: 'Confirmation', url: '/production/confirmation', icon: IconMail },
+  { title: 'Rapport', url: '/production/repport', icon: IconChartBar }
 ];
 
-function DashboardPage() {
+function ProductionDashboardPage() {
   const [session, loading] = useSession();
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== 'undefined' && loading) return null;
@@ -331,4 +331,4 @@ function DashboardPage() {
   );
 }
 
-export default DashboardPage;
+export default ProductionDashboardPage;

@@ -99,7 +99,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="hidden space-x-10 md:flex md:ml-10">
-                <Link href="/dashboard">
+                <Link href="/production">
                   <a className="font-medium text-white hover:text-gray-300 transition duration-150 ease-in-out">
                     Product
                   </a>
