@@ -1,5 +1,6 @@
 import { getSession } from 'next-auth/client';
 import { connectToDatabase } from '@/util/mongodb';
+import { query } from "@kaviar/nova";
 
 async function rackList(req, res) {
   const { method } = req
@@ -14,25 +15,24 @@ async function rackList(req, res) {
     case 'GET':
       try {
         const { db } = await connectToDatabase();
-        const options = {
-          sort: { position: 1 },
-          limit: 20,
-          projection: {
-            rack_id: 1,
-            category: 1,
-            sub_category: 1,
-            position:1,
-            dp_name: 1
-          }
-        };
+        const Racks = await db.collection('racks');
 
-        const collection = await db.collection('racks')
-        const result = await collection.find({}, options)
-        const racks = await result.forEach((doc) => { return doc })
+        const result = await query(Racks, {
+          $: {
+            options: {
+              sort: { position: 1 },
+              limit: 20,
+              skip: 0
+            }
+          },
+          rack_id: 1,
+          category: 1,
+          sub_category: 1,
+          position:1,
+          dp_name: 1
+        }).fetch();
 
-        console.log('racks', racks);
-
-        res.status(200).json({ success: true, data: racks })
+        res.status(200).json({ success: true, data: result })
       } catch (error) {
         console.log('errorerror', error);
         res.status(400).json({ success: false })
