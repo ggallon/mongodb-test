@@ -3,25 +3,25 @@ import { manyToOne, query } from "@kaviar/nova";
 import { connectToDatabase } from '@/util/mongodb';
 
 async function UsersList(req, res) {
-  const { method } = req
-  const session = await getSession({ req });
-  if (!session) {
-    res
-      .status(401)
-      .send({ error: 'You must be sign in to view the protected content on this page.' });
-  }
+  const { method } = req;
 
   switch (method) {
-    case 'GET':
+    case 'GET': {
+      const session = await getSession({ req });
+      if (!session) {
+        res
+          .status(401)
+          .send({ success: false, error: 'You must be sign in to view the protected content on this page.' });
+      }
+
       try {
         const { db } = await connectToDatabase();
         const Users = await db.collection('users');
         const Accounts = await db.collection('accounts');
 
-        manyToOne(Accounts, User, {
+        manyToOne(Accounts, Users, {
           linkName: "user",
-          inversedLinkName: "accounts",
-          // field will be `postId`
+          inversedLinkName: "accounts"
         });
 
         const results = await query(Users, {
@@ -45,8 +45,7 @@ async function UsersList(req, res) {
                 },
               },
             },
-            providerId: 1,
-            accessToken: 1
+            providerId: 1
           }
         }).fetch();
 
@@ -55,6 +54,7 @@ async function UsersList(req, res) {
         res.status(400).json({ success: false })
       }
       break
+    }
     default:
       res.status(400).json({ success: false })
       break
