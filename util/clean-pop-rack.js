@@ -26,10 +26,22 @@ const cleanPopRack = racks => {
   racks.forEach(rack => {
     const values = Object.values(rack);
     const merged = KEY_MAPPING.reduce((obj, key, index) => ({ ...obj, [key]: values[index] }), {});
+    const street = merged.address.split(',');
+    const location = merged.city.split(' ');
+
+    delete merged.address;
+    delete merged.city;
 
     const cleaned = {
       ...merged,
       position: merged.position.replace(/\s+/g, ''),
+      address: {
+        streetNumber: street[0],
+        streetType: street[1].toLocaleLowerCase(),
+        streetName: street[2],
+        zipCode: location.shift(),
+        city: location.join(' ')
+      },
       latitude: Number(merged.latitude),
       longitude: Number(merged.longitude),
       location: {
