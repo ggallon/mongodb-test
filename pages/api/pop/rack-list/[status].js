@@ -7,7 +7,7 @@ async function rackList(req, res) {
   if (!session) {
     res
       .status(401)
-      .send({ error: 'You must be sign in to view the protected content on this page.' });
+      .send({ error: 'You must be sign in to get the protected content on this api.' });
   }
 
   // Status options: -1 (all), 1 (active), 0 (inactive)
